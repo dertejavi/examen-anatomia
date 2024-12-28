@@ -3,6 +3,8 @@ import LoadingScreen from "./components/ExamComponents/LoadingScreen.jsx";
 import StartScreen from "./components/ExamComponents/StartScreen.jsx";
 import ExamScreen from "./components/ExamComponents/ExamScreen.jsx";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import questionsData from './assets/questions.json'
+import backgroundImage from './assets/fondo1.jpg'
 
 function App() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -23,14 +25,13 @@ function App() {
   const [selectedExam, setSelectedExam] = useState(null);
   const [examCounter, setExamCounter] = useState(1);
 
-  useEffect(() => {
+useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}questions.json`);
-        const data = await response.json();
-        setQuestionDatabase(data);
+        // En lugar de fetch, usa directamente los datos importados
+        setQuestionDatabase(questionsData);
       } catch (error) {
-        console.error("Error fetching questions:", error);
+        console.error("Error loading questions:", error);
       } finally {
         setIsLoading(false);
       }
@@ -197,7 +198,7 @@ function App() {
       <div
         className="max-w-7xl mx-auto p-6 pb-24 relative"
         style={{
-          backgroundImage: `url(/fondo1.jpg)`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
