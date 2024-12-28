@@ -12,7 +12,7 @@ const StartScreen = ({
     <div
       className="flex flex-col justify-center items-center h-screen"
       style={{
-        backgroundImage: `url(/fondo1.jpg)`,
+        backgroundImage: `url(${import.meta.env.BASE_URL}fondo1.jpg)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
